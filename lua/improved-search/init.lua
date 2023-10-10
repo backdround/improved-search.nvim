@@ -80,7 +80,8 @@ end
 
 local function search_selected_text()
   -- Leaves visual mode
-  require("utilities").reset_current_mode()
+  local escape = vim.api.nvim_replace_termcodes("<esc>", true, false, true)
+  vim.api.nvim_feedkeys(escape, "nx", false)
 
   -- Gets text to search
   local selected_lines = get_visual_selection_range()
