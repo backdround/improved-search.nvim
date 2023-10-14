@@ -1,50 +1,4 @@
-------------------------------------------------------------
--- Utility functions
-
-local function normal(...)
-  local cmd = {
-    cmd = "normal",
-    bang = true,
-    args = { ... },
-  }
-
-  local success, err = pcall(vim.api.nvim_cmd, cmd, {})
-
-  -- Prints error without file context
-  if not success then
-    err = err:gsub(".*Vim[^:]*:", "", 1)
-    vim.api.nvim_err_writeln(err)
-  end
-end
-
-local function get_mark(mark)
-  local line, column = unpack(vim.api.nvim_buf_get_mark(0, mark))
-
-  -- Checks that column unsigned(-1)
-  local line_string = vim.api.nvim_buf_get_lines(0, line - 1, line, true)[1]
-  if column > line_string:len() then
-    column = line_string:len()
-  end
-
-  return line - 1, column
-end
-
-local function get_visual_selection_range()
-  local start_row, start_column = get_mark("<")
-  local end_row, end_column = get_mark(">")
-  local selected_lines = vim.api.nvim_buf_get_text(
-    0,
-    start_row,
-    start_column,
-    end_row,
-    end_column + 1,
-    {}
-  )
-  return selected_lines
-end
-
-------------------------------------------------------------
--- Search functions
+local utils = require("improved-search.utils")
 
 local function search_current_word_without_moving()
   local current_word = vim.fn.expand("<cword>")
@@ -64,17 +18,17 @@ end
 
 local function search_stable_next()
   if vim.v.searchforward == 1 then
-    normal(vim.v.count1 .. "n")
+    utils.normal(vim.v.count1 .. "n")
   else
-    normal(vim.v.count1 .. "N")
+    utils.normal(vim.v.count1 .. "N")
   end
 end
 
 local function search_stable_previous()
   if vim.v.searchforward == 0 then
-    normal(vim.v.count1 .. "n")
+    utils.normal(vim.v.count1 .. "n")
   else
-    normal(vim.v.count1 .. "N")
+    utils.normal(vim.v.count1 .. "N")
   end
 end
 
@@ -84,7 +38,7 @@ local function search_selected_text()
   vim.api.nvim_feedkeys(escape, "nx", false)
 
   -- Gets text to search
-  local selected_lines = get_visual_selection_range()
+  local selected_lines = utils.get_visual_selection_range()
 
   local special_symbols = "^$\\"
   if vim.api.nvim_get_option("magic") then
@@ -97,7 +51,7 @@ local function search_selected_text()
   local text_to_search = table.concat(selected_lines, "\\n")
 
   -- Sets cursor to left part of selected text (for next search conviniece)
-  local start_row, start_column = get_mark("<")
+  local start_row, start_column = utils.get_mark("<")
   vim.api.nvim_win_set_cursor(0, { start_row + 1, start_column })
 
   -- Sets the selected text as a search text
