@@ -1,15 +1,15 @@
 # Improved-search.nvim
-It's a neovim plugin that improves and adds some search abilities.
+It's a Neovim plugin that improves the search experience.
 
 It provides:
 - **stable jump** to next / previous search pattern (regardless of the last
 search direction)
 - search the **word under the cursor** without moving (like `*` or `#`)
 - search operator:
-  - search selected text provided by **visual mode** (visual selection +
+  - search text selected in **visual mode** (visual selection +
 operator)
-  - search selected text provided by **a motion** (operator + motion)
-  - it all works for **multiline** search
+  - search text provided by **a motion** (operator + motion)
+  - it all works for a **multiline** search.
 
 ### Preview
 #### Search selected text
@@ -50,7 +50,7 @@ vim.keymap.set("n", "|", search.in_place)
 - `current_word{_strict}` - in-place current word search (for "n" mode)
 
 - `in_place{_strict}` / `forward{_strict}` / `backward{_strict}` -
-search operators (for "n/x/o" modes)
+search operators (for "n/x/o" modes).
 
 <br>
 Functions with `_strict` postfix add word boundaries (`\<` and `\>`) for all
@@ -58,4 +58,4 @@ search patterns.
 
 ---
 ### Limitations:
-  - Correct search text in **visual block mode** isn't implemented.
+- Search text that is selected by **visual block mode** isn't work as expected.
