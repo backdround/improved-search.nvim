@@ -11,6 +11,16 @@ operator)
   - search selected text provided by **a motion** (operator + motion)
   - it all works for **multiline** search
 
+### Preview
+#### Search selected text
+![selection_search](https://github.com/backdround/improved-search.nvim/assets/17349169/5f94a5aa-f315-4e72-be15-37452b2016c8)
+
+#### Current word search in place
+![current_word](https://github.com/backdround/improved-search.nvim/assets/17349169/3220fbc7-ad4e-48e3-8cb4-0df820fcb861)
+
+#### Stable next / previous
+![2023-10-16_07-55](https://github.com/backdround/improved-search.nvim/assets/17349169/a3a4942d-5a67-4d22-8d78-d33c48375c92)
+
 ---
 ### Configuration example
 ```lua
