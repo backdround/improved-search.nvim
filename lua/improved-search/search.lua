@@ -17,7 +17,7 @@ local M = {}
 local invoke = function(strict, do_after)
   Improved_search_operator_behaviour = {
     strict = strict,
-    do_after = do_after
+    do_after = do_after,
   }
   vim.go.operatorfunc = "v:lua.Improved_search_operator"
   vim.api.nvim_feedkeys("g@", "n", false)

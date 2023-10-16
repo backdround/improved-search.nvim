@@ -20,7 +20,6 @@ local function get_subjected_lines(motion_type)
 
   if motion_type == "line" then
     return vim.api.nvim_buf_get_lines(0, start_line - 1, end_line, true)
-
   elseif motion_type == "char" then
     return vim.api.nvim_buf_get_text(
       0,
@@ -30,7 +29,6 @@ local function get_subjected_lines(motion_type)
       end_column + 1,
       {}
     )
-
   elseif motion_type == "block" then
     local selected_lines =
       vim.api.nvim_buf_get_lines(0, start_line - 1, end_line, true)
