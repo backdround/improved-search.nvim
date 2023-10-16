@@ -24,12 +24,12 @@ local invoke = function(strict, do_after)
 end
 
 ---Invoke search operator.
-M.search_current = function()
+M.search_in_place = function()
   invoke(false, nil)
 end
 
 ---Invoke search operator and search next pattern like "g*".
-M.search_next = function()
+M.search_forward = function()
   local saved_count = vim.v.count1
   invoke(false, function()
     jump.next(saved_count)
@@ -37,7 +37,7 @@ M.search_next = function()
 end
 
 ---Invoke search operator and search previous pattern like "g#".
-M.search_previous = function()
+M.search_backward = function()
   local saved_count = vim.v.count1
   invoke(false, function()
     jump.previous(saved_count)
@@ -45,13 +45,13 @@ M.search_previous = function()
 end
 
 ---Invoke strict (with word-boundaries) search operator.
-M.search_current_strict = function()
+M.search_in_place_strict = function()
   invoke(true, nil)
 end
 
 ---Invoke strict (with word-boundaries) search operator and search next pattern
 ---like "*".
-M.search_next_strict = function()
+M.search_forward_strict = function()
   local saved_count = vim.v.count1
   invoke(true, function()
     jump.next(saved_count)
@@ -60,7 +60,7 @@ end
 
 ---Invoke strict (with word-boundaries) search operator and search previous
 ---pattern like "#".
-M.search_previous_strict = function()
+M.search_backward_strict = function()
   local saved_count = vim.v.count1
   invoke(true, function()
     jump.previous(saved_count)

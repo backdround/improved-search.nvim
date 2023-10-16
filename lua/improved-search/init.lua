@@ -11,11 +11,11 @@ return {
   current_word = current_word.search,
   current_word_strict = current_word.search_strict,
 
-  current = search.search_current,
-  next = search.search_next,
-  previous = search.search_previous,
+  in_place = search.search_in_place,
+  forward = search.search_forward,
+  backward = search.search_backward,
 
-  current_strict = search.search_current_strict,
-  next_strict = search.search_next_strict,
-  previous_strict = search.search_previous_strict,
+  in_place_strict = search.search_in_place_strict,
+  forward_strict = search.search_forward_strict,
+  backward_strict = search.search_backward_strict,
 }
