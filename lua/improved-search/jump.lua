@@ -24,7 +24,7 @@ end
 
 ---Search next pattern. It's like "n", but doesn't depend on last
 ---search direction and thus always searchs forward.
----@param count number count of jumps. by default uses vim.v.count1.
+---@param count number|nil count of jumps. by default uses vim.v.count1.
 M.next = function(count)
   if not count then
     count = vim.v.count1
@@ -39,7 +39,7 @@ end
 
 ---Search previous pattern. It's like "N", but doesn't depend on last
 ---search direction and thus always searchs backward.
----@param count number count of jumps. by default uses vim.v.count1.
+---@param count number|nil count of jumps. by default uses vim.v.count1.
 M.previous = function(count)
   if not count then
     count = vim.v.count1
