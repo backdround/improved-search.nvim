@@ -1,7 +1,16 @@
-local search = require("improved-search")
 local u = require("tests.utils")
 
 require("tests.custom-asserts").register()
+
+local function silent_stable_next(count)
+  local template = "silent! lua require('improved-search').stable_next(%s)"
+  vim.cmd(template:format(count))
+end
+
+local function silent_stable_previous(count)
+  local template = "silent! lua require('improved-search').stable_previous(%s)"
+  vim.cmd(template:format(count))
+end
 
 describe("stable", function()
   describe("next", function()
@@ -11,8 +20,8 @@ describe("stable", function()
         bbbb aaaa bbbb aaaa
       ]])
       u.set_cursor(1, 5)
-      u.feedkeys("/aaaa<cr>")
-      search.stable_next()
+      u.normal("/aaaa<cr>")
+      silent_stable_next()
       assert.cursor_at(2, 5)
     end)
 
@@ -22,8 +31,8 @@ describe("stable", function()
         bbbb aaaa bbbb aaaa
       ]])
       u.set_cursor(2, 5)
-      u.feedkeys("?aaaa<cr>")
-      search.stable_next()
+      u.normal("?aaaa<cr>")
+      silent_stable_next()
       assert.cursor_at(2, 5)
     end)
 
@@ -33,9 +42,9 @@ describe("stable", function()
         bbbb aaaa bbbb aaaa
       ]])
       u.set_cursor(1, 0)
-      u.feedkeys("/aaaa<cr>")
-      u.feedkeys("3") -- set v.count
-      search.stable_next()
+      u.normal("/aaaa<cr>")
+      u.normal("3") -- set v.count
+      silent_stable_next()
       assert.cursor_at(2, 15)
     end)
 
@@ -45,8 +54,8 @@ describe("stable", function()
         bbbb aaaa bbbb aaaa
       ]])
       u.set_cursor(1, 0)
-      u.feedkeys("/aaaa<cr>")
-      search.stable_next(3)
+      u.normal("/aaaa<cr>")
+      silent_stable_next(3)
       assert.cursor_at(2, 15)
     end)
   end)
@@ -58,8 +67,8 @@ describe("stable", function()
         bbbb aaaa bbbb aaaa
       ]])
       u.set_cursor(1, 15)
-      u.feedkeys("/aaaa<cr>")
-      search.stable_previous()
+      u.normal("/aaaa<cr>")
+      silent_stable_previous()
       assert.cursor_at(1, 15)
     end)
 
@@ -69,8 +78,8 @@ describe("stable", function()
         bbbb aaaa bbbb aaaa
       ]])
       u.set_cursor(2, 5)
-      u.feedkeys("?aaaa<cr>")
-      search.stable_previous()
+      u.normal("?aaaa<cr>")
+      silent_stable_previous()
       assert.cursor_at(1, 5)
     end)
 
@@ -80,9 +89,9 @@ describe("stable", function()
         bbbb aaaa bbbb aaaa
       ]])
       u.set_cursor(2, 5)
-      u.feedkeys("/aaaa<cr>")
-      u.feedkeys("3") -- set v.count
-      search.stable_previous()
+      u.normal("/aaaa<cr>")
+      u.normal("3") -- set v.count
+      silent_stable_previous()
       assert.cursor_at(1, 5)
     end)
 
@@ -92,8 +101,8 @@ describe("stable", function()
         bbbb aaaa bbbb aaaa
       ]])
       u.set_cursor(2, 5)
-      u.feedkeys("/aaaa<cr>")
-      search.stable_previous(3)
+      u.normal("/aaaa<cr>")
+      silent_stable_previous(3)
       assert.cursor_at(1, 5)
     end)
   end)

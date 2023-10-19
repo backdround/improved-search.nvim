@@ -35,11 +35,10 @@ local function install_plugin(plugin)
   local plugin_root = get_cache_path() .. "/pack/deps/start/" .. name
 
   if vim.loop.fs_stat(plugin_root) then
-    print("Plugin " .. plugin .. " is already installed")
     return
   end
 
-  print("Installing " .. plugin)
+  print("Installing " .. plugin .. "\n")
   local clone_command = {
     "git",
     "clone",
@@ -48,7 +47,7 @@ local function install_plugin(plugin)
     plugin_root,
   }
   system(clone_command, "clone " .. plugin)
-  print("Plugin " .. plugin .. " has been installed")
+  print("Plugin " .. plugin .. " has been installed" .. "\n")
 end
 
 ------------------------------------------------------------

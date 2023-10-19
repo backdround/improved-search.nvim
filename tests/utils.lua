@@ -40,9 +40,19 @@ M.set_cursor = function(line, column)
   vim.api.nvim_win_set_cursor(0, {line, column})
 end
 
-M.feedkeys = function(keys)
+M.normal = function(keys)
   keys = vim.api.nvim_replace_termcodes(keys, true, true, true)
-  vim.api.nvim_feedkeys(keys, "nx", false)
+
+  local cmd = {
+    cmd = "normal",
+    bang = true,
+    args = { keys },
+    mods = {
+      silent = true,
+    },
+  }
+
+  vim.api.nvim_cmd(cmd, {})
 end
 
 return M
