@@ -8,8 +8,8 @@ local function cursor_at(_, arguments)
   local cursor_position = vim.api.nvim_win_get_cursor(0)
 
   -- Prepare arguments for assert output
-  table.insert(arguments, 3, cursor_position[1])
-  table.insert(arguments, 4, cursor_position[2])
+  table.insert(arguments, 1, cursor_position[1])
+  table.insert(arguments, 2, cursor_position[2])
   arguments.nofmt = { 1, 2, 3, 4 }
 
   if line == cursor_position[1] and column == cursor_position[2] then
@@ -23,7 +23,7 @@ local register = function()
   say:set(
     "assertion.cursor_at",
     "Expected the cursor to be at the position." ..
-    "\nPassed in:\n { %s, %s }\nExpected:\n { %s, %s }"
+    "\nReal:\n { %s, %s }\nExpected:\n { %s, %s }"
   )
   assert:register(
     "assertion",
