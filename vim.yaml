@@ -45,3 +45,6 @@ globals:
     args:
       - type: number
       - type: number
+  assert.search_pattern:
+    args:
+      - type: string

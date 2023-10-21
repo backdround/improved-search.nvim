@@ -55,4 +55,12 @@ M.normal = function(keys)
   vim.api.nvim_cmd(cmd, {})
 end
 
+-- It works for invokation operator in visual mode with v:count.
+M.perform_through_keymap = function(func)
+  local map_label = "<Plug>(perform_through_keymap)"
+  vim.keymap.set({ "n", "o", "x" }, map_label, func)
+  local key = vim.api.nvim_replace_termcodes(map_label, true, false, true)
+  vim.api.nvim_feedkeys(key, "x", false)
+end
+
 return M
