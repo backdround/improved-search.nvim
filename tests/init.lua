@@ -24,7 +24,7 @@ local function get_cache_path()
   local cache_path = string.format("%s/%s-test", std_cache_path, project_name)
 
   if not vim.loop.fs_stat(cache_path) then
-    vim.fn.mkdir(cache_path)
+    vim.fn.mkdir(cache_path, "p")
   end
 
   return cache_path

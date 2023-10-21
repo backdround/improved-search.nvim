@@ -12,10 +12,10 @@ jobs:
     container: alpine:latest
     steps:
       - name: Prepare container
-        run: apk update && apk add neovim git
+        run: apk update && apk add neovim git bash
 
       - name: Checkout repositry
         run: git clone --depth 1 "$GITHUB_SERVER_URL/$GITHUB_REPOSITORY" ./
 
       - name: Run tests
-        run: ./tests/run.sh
+        run: git config --system --add safe.directory $(pwd) && ./tests/run.sh
