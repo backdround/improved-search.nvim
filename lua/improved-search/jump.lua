@@ -7,10 +7,14 @@ local M = {}
 ---It's vim's "normal!" command
 ---@param ... any default vim's maps
 local function normal(...)
+  local neovim_is_headless = next(vim.api.nvim_list_uis()) == nil
   local cmd = {
     cmd = "normal",
     bang = true,
     args = { ... },
+    mods = {
+      silent = neovim_is_headless,
+    },
   }
 
   local success, err = pcall(vim.api.nvim_cmd, cmd, {})
