@@ -68,7 +68,7 @@ describe("search-operator", function()
       end)
 
       it("should respect v:count", function()
-        vim.api.nvim_feedkeys("3", "nx", false) -- set v:count
+        vim.api.nvim_feedkeys("3", "nx", false)
         search.forward()
         vim.api.nvim_feedkeys("2e", "nx", false)
         assert.search_pattern("text to")
