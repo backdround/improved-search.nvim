@@ -3,8 +3,6 @@ name: tests
 on:
   push:
   pull_request:
-    branches:
-      - main
 
 jobs:
   run-tests:
@@ -14,8 +12,9 @@ jobs:
       - name: Prepare container
         run: apk update && apk add neovim git bash
 
-      - name: Checkout repositry
-        run: git clone --depth 1 "$GITHUB_SERVER_URL/$GITHUB_REPOSITORY" ./
+      - uses: actions/checkout@v4
 
       - name: Run tests
-        run: git config --system --add safe.directory $(pwd) && ./tests/run.sh
+        run: |
+          git config --system --add safe.directory "$(pwd)"
+          ./tests/run.sh
