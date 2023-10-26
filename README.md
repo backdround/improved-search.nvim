@@ -2,6 +2,7 @@
 It's a Neovim plugin that improves the search experience.
 
 It provides:
+
 - **stable** **jump** to next / previous search pattern (regardless of the last
 search direction)
 - search the **word** under the **cursor** without moving (like `*` or `#`)
@@ -55,16 +56,17 @@ vim.keymap.set("n", "|", search.in_place)
 <!-- panvimdoc-ignore-end -->
 
 ### Functions and operators
-- `stable_next` / `stable_previous` - stable search motions (for "n/x/o" modes)
+| function / operator | modes | description |
+| --- | --- | --- |
+| stable_next | n, x, o | Search next pattern (regardless of a previous search direction)|
+| stable_previous | n, x, o | Search previous pattern (regardless of a previous search direction)|
+| current_word[_strict] | n | Search current word in-place |
+| in_place[_strict] | n, x, o | In-place search operator |
+| forward[_strict] | n, x, o | Forward search operator |
+| backward[_strict] | n, x, o | Backward search operator |
 
-- `current_word{_strict}` - in-place current word search (for "n" mode)
-
-- `in_place{_strict}` / `forward{_strict}` / `backward{_strict}` -
-search operators (for "n/x/o" modes).
-
-<br>
-Functions with `_strict` postfix add word boundaries (`\<` and `\>`) for all
-search patterns.
+- `_strict` postfix means that a search operator / function uses a pattern with
+word boundaries. In other words, the pattern is encapsulated with `\<` and `\>`.
 
 <!-- panvimdoc-ignore-start -->
 
