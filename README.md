@@ -2,14 +2,16 @@
 It's a Neovim plugin that improves the search experience.
 
 It provides:
-- **stable jump** to next / previous search pattern (regardless of the last
+- **stable** **jump** to next / previous search pattern (regardless of the last
 search direction)
-- search the **word under the cursor** without moving (like `*` or `#`)
+- search the **word** under the **cursor** without moving (like `*` or `#`)
 - search operator:
-  - search text selected in **visual mode** (visual selection +
+  - search text selected in **visual** **mode** (visual selection +
 operator)
-  - search text provided by **a motion** (operator + motion)
+  - search text provided by **a** **motion** (operator + motion)
   - it all works for a **multiline** search.
+
+<!-- panvimdoc-ignore-start -->
 
 ### Preview
 #### Search selected text
@@ -22,6 +24,9 @@ operator)
 ![2023-10-16_07-55](https://github.com/backdround/improved-search.nvim/assets/17349169/a3a4942d-5a67-4d22-8d78-d33c48375c92)
 
 ---
+
+<!-- panvimdoc-ignore-end -->
+
 ### Configuration example
 ```lua
 local search = require("improved-search")
@@ -43,7 +48,12 @@ vim.keymap.set("n", "|", search.in_place)
 -- You can also use search.forward / search.backward for motion selection.
 ```
 
+<!-- panvimdoc-ignore-start -->
+
 ---
+
+<!-- panvimdoc-ignore-end -->
+
 ### Functions and operators
 - `stable_next` / `stable_previous` - stable search motions (for "n/x/o" modes)
 
@@ -56,6 +66,11 @@ search operators (for "n/x/o" modes).
 Functions with `_strict` postfix add word boundaries (`\<` and `\>`) for all
 search patterns.
 
+<!-- panvimdoc-ignore-start -->
+
 ---
+
+<!-- panvimdoc-ignore-end -->
+
 ### Limitations:
 - Search text that is selected by **visual block mode** isn't work as expected.
