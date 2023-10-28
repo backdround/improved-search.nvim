@@ -1,4 +1,4 @@
-*improved-search.nvim.txt*     For NVIM v0.8.0    Last change: 2023 October 26
+*improved-search.nvim.txt*     For NVIM v0.8.0    Last change: 2023 October 28
 
 ==============================================================================
 Table of Contents                     *improved-search.nvim-table-of-contents*
