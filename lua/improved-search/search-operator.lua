@@ -18,6 +18,18 @@ local function get_subjected_lines(motion_type)
   local start_line, start_column = get_mark("[")
   local end_line, end_column = get_mark("]")
 
+  local swap = function()
+    start_line, end_line = end_line, start_line
+    start_column, end_column = end_column, start_column
+  end
+
+  if
+    start_line > end_line
+    or start_line == end_column and start_column > end_column
+  then
+    swap()
+  end
+
   if motion_type == "line" then
     return vim.api.nvim_buf_get_lines(0, start_line - 1, end_line, true)
   elseif motion_type == "char" then
