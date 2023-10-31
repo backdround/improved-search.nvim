@@ -3,8 +3,6 @@ name: docs
 on:
   push:
   pull_request:
-    branches:
-      - docs-ci-test
 
 jobs:
   docs:
