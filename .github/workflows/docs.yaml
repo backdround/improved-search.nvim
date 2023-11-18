@@ -28,6 +28,7 @@ jobs:
         with:
           vimdoc: improved-search.nvim
           pandoc: /github/home/README.md
+          titledatepattern: "%Y"
 
       - name: Prepare environment to push changes
         run: |
