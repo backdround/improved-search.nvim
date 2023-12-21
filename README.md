@@ -16,13 +16,13 @@ operator)
 
 ### Preview
 #### Search selected text
-![selection_search](https://github.com/backdround/improved-search.nvim/assets/17349169/5f94a5aa-f315-4e72-be15-37452b2016c8)
+<img src="https://github.com/backdround/improved-search.nvim/assets/17349169/41f674db-1dfd-4764-b0e9-6a2ce861154f" width="800px" />
 
 #### Current word search in place
-![current_word](https://github.com/backdround/improved-search.nvim/assets/17349169/3220fbc7-ad4e-48e3-8cb4-0df820fcb861)
+<img src="https://github.com/backdround/improved-search.nvim/assets/17349169/50cdb24c-58b9-4aa6-ba14-f58786b41183" width="800px" />
 
 #### Stable next / previous
-![2023-10-16_07-55](https://github.com/backdround/improved-search.nvim/assets/17349169/a3a4942d-5a67-4d22-8d78-d33c48375c92)
+<img src="https://github.com/backdround/improved-search.nvim/assets/17349169/a3a4942d-5a67-4d22-8d78-d33c48375c92" width="800px" />
 
 ---
 
